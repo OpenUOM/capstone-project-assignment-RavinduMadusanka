@@ -10,7 +10,7 @@ import {AppServiceService} from '../../app-service.service';
 export class EditTeacherComponent implements OnInit {
 
 
-  teacherData: any;
+  teacherData: any = {};
 
 
   constructor(private service : AppServiceService, private router: Router) { }
@@ -35,7 +35,7 @@ export class EditTeacherComponent implements OnInit {
   editTeacher(values){
     values.id = this.navigation.extras.state.id;
     this.service.editTeacher(values).subscribe((response)=>{
-      this.teacherData = response[0];
+      this.router.navigate(['']);
     },(error)=>{
       console.log('ERROR - ', error)
     })
